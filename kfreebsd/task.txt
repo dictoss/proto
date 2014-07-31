@@ -1,0 +1,82 @@
+= Debian GNU/kFreeBSDメモ =
+== freebsd kernelのアドバンテージ ==
+ * NVIDIA driverがlinuxより断然早い(windows並に早い)
+   * 3DCG分野ではアドバンテージになる
+ * accf_http.ko、accf_data.koがあり、apacheが少し早い
+   * linuxの場合はlinusに怒られて、koモジュール作成が断念となった
+ * L2TP/IPsec
+   * ネットワーク機器はBSDを由来にしている機器が多い
+   * linuxでL2TP/IPsecはなかなかつらい
+   * 以下のメールで頑張っている人がいる
+{{{
+From: Steven Chamberlain <steven@pyro.eu.org>
+To: matt@mattgrant.net.nz
+CC: debian-devel@lists.debian.org
+Subject: Re: Deprecating/removing racoon/ipsec-tools  from Debian GNU/Linux and racoon from Debian/kfreebsd
+Date: Sun, 11 May 2014 16:59:09 +0100
+}}}
+ * linuxエミュレーション
+   * freebsd上でlinuxバイナリも動いちゃう
+
+---- 
+
+== 調査内容（日常生活） ==
+ * intel video driver
+   * kfreebsd-image-11で対応
+   * apt-get install xserver-xorg-video-intel
+   * i915kms.koをロードしてからstartxするとOK(ロードしないとVESAで起動する)
+   * i915.koをロードしておいて、i915kms.koをロードするとrebootした
+   * X -configureするとrebootした
+ * wireless lan
+   * 無線LANデバイスは見える(iwn0など)
+ * bluetooth
+   * koはkfreebsd-image-11ですべてロードできた
+   * hccontrolコマンドが見当たらないのでビルドに含めてないのかも
+ * acpi_sony.ko
+   * VAIO限定
+   * sudo sysctl dev.acpi_sony.0.brightness=3
+   * 上記コマンドで液晶の輝度を変更できる(VAIO TZで確認)
+ * FreeRDP
+   * sidのパッケージ1.0.2はあった。リモートデスクトップできた
+   * githubからcloneしてビルドできた。-DWITH_ALSA=OFFが必要。リモートデスクトップできた
+ * evince
+   * apt-get install evince poppler-data
+   * Debian勉強会の資料が表示できました
+   * 日本語の表示もできた
+ * aucacious
+   * OSSでMP3が再生できた
+ * pulseaudio
+   * エラーになった
+{{{
+$ /usr/bin/pulseaudio -D
+W: [(null)] caps.c: Normally all extra capabilities would be dropped now, but that's impossible because PulseAudio was built without capabilities support.
+E: [(null)] main.c: デーモン開始に失敗しました。
+}}}
+
+ * emacs
+   * 使えます
+ * geeqie
+   * 使えます
+ * vlc
+   * 地デジのTSファイルを再生すると落ちた
+ * freebsd-ppp
+   * L-02CでLTE接続できることを確認
+   * usb-modeswitchを使う必要がある
+ * openvpn
+   * クライアントして動作することを確認
+ * gnash
+   * 「flashプラグインが入ってない」は出てこなくなった
+   * でも動かない
+
+----
+
+== 調査内容（目玉機能） ==
+ * nvidia video driver
+   * 少し前に調べて移植を試みたが、規模が大きすぎて断念
+ * IPsec
+   * kfreebsd-image-11では「option IPSEC」「option IPSEC_ESP」なしでビルドされている
+ * BHyVe
+   * linux kernelのkvmと同等な仮想化機能
+   * まだ発展途上
+   * sandybridge以降のCPUが必須(amdのCPUは現状非対応）
+
