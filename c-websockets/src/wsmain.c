@@ -161,11 +161,19 @@ int callback_chat(struct libwebsocket_context *this,
                 if(sendmsg){
                     memcpy(&sendmsg[LWS_SEND_BUFFER_PRE_PADDING], jsonmsg, jsonmsg_len);
 
+                    fprintf(stderr, "send message:\n%s\n", jsonmsg);
+
                     ret = libwebsocket_write(wsi,
                                              (unsigned char*)&(sendmsg[LWS_SEND_BUFFER_PRE_PADDING]),
                                              jsonmsg_len,
                                              LWS_WRITE_TEXT);
                 }
+                else{
+                    fprintf(stderr, "fail malloc(). [sendmsg]\n");   
+                }
+            }
+            else{
+                fprintf(stderr, "fail malloc(). [jsonmsg]\n");
             }
 
             free(jsonmsg);
