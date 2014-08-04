@@ -17,7 +17,7 @@ LIBS=
 
 # link option
 CFLAGS=
-LDFLAGS=-lwebsockets 
+LDFLAGS=-lwebsockets -ljansson
 
 #################################################
 #

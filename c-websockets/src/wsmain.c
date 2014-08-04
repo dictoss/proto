@@ -12,6 +12,29 @@
 #include <stdarg.h>
 
 #include <libwebsockets.h>
+#include <jansson.h>
+
+/* macro */
+/*
+#define MY_USE_STATIC_BUF
+*/
+#define RECV_BUF_SIZE  (1024)
+#define MSG_RECV_POLLING_SPAN  (1 * 1000)
+
+
+/* typedef */
+typedef enum  {
+    WSPROTO_CHAT,
+    WSPROTO_MAX,
+} MY_PROTOCALS;
+
+typedef struct my_config {
+    char server_address[256];
+    int is_use_ssl;
+    unsigned short server_port;
+    char ws_pass[256];
+} MY_CONFIG;
+
 
 /* proto type */ 
 void log_callback(int, const char *, ...);
@@ -26,19 +49,15 @@ int callback_chat(struct libwebsocket_context *,
 volatile sig_atomic_t g_sigint = 0;
 int deny_deflate = 0;
 int deny_mux = 0;
+struct my_config g_config = {"192.168.22.102", 0, 8888, "12345678"};
 
-
-typedef enum  {
-    WSPROTO_CHAT,
-    WSPROTO_MAX,
-} MY_PROTOCALS;
 
 struct libwebsocket_protocols g_wsproto[] = {
     {
         "chat",
         callback_chat,
-        4096,
-        4096,
+        0,
+        RECV_BUF_SIZE,
         0,
         NULL,
         0,
@@ -96,21 +115,66 @@ int callback_chat(struct libwebsocket_context *this,
                   void *user, void *in, size_t len)
 {
     int ret = 0;
-    char msgbuf[4096];
+    size_t jsonmsg_len = 0;
+#ifdef MY_USE_STATIC_BUF
+    char msgbuf[LWS_SEND_BUFFER_PRE_PADDING + RECV_BUF_SIZE + LWS_SEND_BUFFER_POST_PADDING];
+#else
+    char *sendmsg = NULL;
+    char *jsonmsg = NULL;
+#endif
 
     switch (reason) {
     case LWS_CALLBACK_CLIENT_ESTABLISHED:
         fprintf(stderr, "LWS_CALLBACK_CLIENT_ESTABLISHED\n");
 
         /* websocket application authentication. */
-        snprintf(msgbuf, sizeof(msgbuf), "{\"data\": {\"token\": \"%s\"}, \"func\": \"auth\"}", "12345678");
+#ifdef MY_USE_STATIC_BUF
+        {
+            jsonmsg_len = snprintf(&msgbuf[LWS_SEND_BUFFER_PRE_PADDING],
+                     sizeof(msgbuf) - LWS_SEND_BUFFER_PRE_PADDING,
+                     "{\"data\": {\"token\": \"%s\"}, \"func\": \"auth\"}",
+                     "12345678");
 
-        fprintf(stderr, "send message:\n%s\n", msgbuf);
+            fprintf(stderr, "send message:\n%s\n", &msgbuf[LWS_SEND_BUFFER_PRE_PADDING]);
         
-        ret = libwebsocket_write(wsi,
-                                 (unsigned char*)msgbuf,
-                                 strlen(msgbuf),
-                                 LWS_WRITE_TEXT);
+            ret = libwebsocket_write(wsi,
+                                     (unsigned char*)&msgbuf[LWS_SEND_BUFFER_PRE_PADDING],
+                                     jsonmsg_len,
+                                     LWS_WRITE_TEXT);
+        }
+#else
+        {
+            json_t *root_dict = json_object();
+            json_t *data_dict = json_object();
+
+            json_object_set_new(root_dict, "func", json_string("auth"));
+
+            json_object_set_new(data_dict, "token", json_string(g_config.ws_pass));
+            json_object_set_new(root_dict, "data", data_dict);
+
+            jsonmsg = json_dumps(root_dict, JSON_COMPACT);
+            if(jsonmsg){
+                jsonmsg_len = strlen(jsonmsg);
+            
+                sendmsg = (char*)malloc(LWS_SEND_BUFFER_PRE_PADDING + jsonmsg_len +
+                                    LWS_SEND_BUFFER_POST_PADDING);
+                if(sendmsg){
+                    memcpy(&sendmsg[LWS_SEND_BUFFER_PRE_PADDING], jsonmsg, jsonmsg_len);
+
+                    ret = libwebsocket_write(wsi,
+                                             (unsigned char*)&(sendmsg[LWS_SEND_BUFFER_PRE_PADDING]),
+                                             jsonmsg_len,
+                                             LWS_WRITE_TEXT);
+                }
+            }
+
+            free(jsonmsg);
+            free(sendmsg);
+
+            json_decref(data_dict);
+            json_decref(root_dict);                                    
+        }
+#endif   
         if(ret < 0){
             fprintf(stderr, "libwebsocket write message failed. (%d)\n", ret);
         }
@@ -155,9 +219,6 @@ int main(int argc, char *argv[])
     struct libwebsocket_context *context = NULL;
     struct lws_context_creation_info wsinfo = {0};
     struct libwebsocket *wsi_chat = NULL;
-    char *address = "192.168.22.102";
-    int port = 8888;
-    int use_ssl = 0;
     int ietf_version = -1;
     int ret = 0;
 
@@ -205,9 +266,9 @@ int main(int argc, char *argv[])
 
     wsi_chat = libwebsocket_client_connect(
         context,
-        address,
-        port,
-        use_ssl,
+        g_config.server_address,
+        g_config.server_port,
+        g_config.is_use_ssl,
         "/",
         "pcdennokan.dip.jp",
         "http://pcdennokan.dip.jp",
@@ -220,7 +281,7 @@ int main(int argc, char *argv[])
 
     /* loop */
     for(;;){
-        ret = libwebsocket_service(context, 1000);
+        ret = libwebsocket_service(context, MSG_RECV_POLLING_SPAN);
         fprintf(stderr, "service : %d\n", ret);
 
         if(0 < g_sigint){
@@ -235,4 +296,3 @@ int main(int argc, char *argv[])
 
 	return EXIT_SUCCESS;
 }
-
