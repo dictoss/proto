@@ -5870,14 +5870,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxalgo/Makefile.in zabbix-2.4.5/src/libs/zb
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: algodefs.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: binaryheap.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: evaluate.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: hashmap.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: hashset.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: int128.o
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: libzbxalgo.a
-zabbix-2.4.5/src/libs/zbxalgoだけに発見: vector.o
 zabbix-2.4.5/src/libs/zbxcommonだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxcommonだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxcommon/Makefile.in zabbix-2.4.5/src/libs/zbxcommon/Makefile.in
@@ -6190,17 +6182,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxcommon/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: alias.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: comms.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: file.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: iprange.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: libzbxcommon.a
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: misc.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: setproctitle.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: str.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: time.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: xml.o
-zabbix-2.4.5/src/libs/zbxcommonだけに発見: zbxgetopt.o
 zabbix-2.4.5/src/libs/zbxcommsだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxcommsだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxcomms/Makefile.in zabbix-2.4.5/src/libs/zbxcomms/Makefile.in
@@ -6510,9 +6491,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxcomms/Makefile.in zabbix-2.4.5/src/libs/z
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxcommsだけに発見: comms.o
-zabbix-2.4.5/src/libs/zbxcommsだけに発見: libzbxcomms.a
-zabbix-2.4.5/src/libs/zbxcommsだけに発見: telnet.o
 zabbix-2.4.5/src/libs/zbxcommshighだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxcommshighだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxcommshigh/Makefile.in zabbix-2.4.5/src/libs/zbxcommshigh/Makefile.in
@@ -6822,8 +6800,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxcommshigh/Makefile.in zabbix-2.4.5/src/li
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxcommshighだけに発見: comms.o
-zabbix-2.4.5/src/libs/zbxcommshighだけに発見: libzbxcommshigh.a
 zabbix-2.4.5/src/libs/zbxconfだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxconfだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxconf/Makefile.in zabbix-2.4.5/src/libs/zbxconf/Makefile.in
@@ -7133,8 +7109,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxconf/Makefile.in zabbix-2.4.5/src/libs/zb
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxconfだけに発見: cfg.o
-zabbix-2.4.5/src/libs/zbxconfだけに発見: libzbxconf.a
 zabbix-2.4.5/src/libs/zbxcryptoだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxcryptoだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxcrypto/Makefile.in zabbix-2.4.5/src/libs/zbxcrypto/Makefile.in
@@ -7444,9 +7418,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxcrypto/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxcryptoだけに発見: base64.o
-zabbix-2.4.5/src/libs/zbxcryptoだけに発見: libzbxcrypto.a
-zabbix-2.4.5/src/libs/zbxcryptoだけに発見: md5.o
 zabbix-2.4.5/src/libs/zbxdbだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxdbだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxdb/Makefile.in zabbix-2.4.5/src/libs/zbxdb/Makefile.in
@@ -7756,8 +7727,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxdb/Makefile.in zabbix-2.4.5/src/libs/zbxd
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxdbだけに発見: db.o
-zabbix-2.4.5/src/libs/zbxdbだけに発見: libzbxdb.a
 zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxdbcache/Makefile.in zabbix-2.4.5/src/libs/zbxdbcache/Makefile.in
@@ -8162,11 +8131,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxdbcache/Makefile.in zabbix-2.4.5/src/libs
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: libzbxdbcache.a
-zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: libzbxdbcache_a-dbcache.o
-zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: libzbxdbcache_a-dbconfig.o
-zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: libzbxdbcache_a-nextchecks.o
-zabbix-2.4.5/src/libs/zbxdbcacheだけに発見: libzbxdbcache_a-valuecache.o
 zabbix-2.4.5/src/libs/zbxdbhighだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxdbhighだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxdbhigh/Makefile.in zabbix-2.4.5/src/libs/zbxdbhigh/Makefile.in
@@ -8793,20 +8757,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxdbhigh/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh.a
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-db.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-dbschema.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-discovery.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-host.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-itservices.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld_common.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld_graph.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld_host.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld_item.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-lld_trigger.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-proxy.o
-zabbix-2.4.5/src/libs/zbxdbhighだけに発見: libzbxdbhigh_a-template_item.o
 zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxdbupgrade/Makefile.in zabbix-2.4.5/src/libs/zbxdbupgrade/Makefile.in
@@ -9118,12 +9068,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxdbupgrade/Makefile.in zabbix-2.4.5/src/li
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: dbupgrade.o
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: dbupgrade_2010.o
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: dbupgrade_2020.o
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: dbupgrade_2030.o
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: dbupgrade_2040.o
-zabbix-2.4.5/src/libs/zbxdbupgradeだけに発見: libzbxdbupgrade.a
 zabbix-2.4.5/src/libs/zbxexecだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxexecだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxexec/Makefile.in zabbix-2.4.5/src/libs/zbxexec/Makefile.in
@@ -9433,8 +9377,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxexec/Makefile.in zabbix-2.4.5/src/libs/zb
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxexecだけに発見: execute.o
-zabbix-2.4.5/src/libs/zbxexecだけに発見: libzbxexec.a
 zabbix-2.4.5/src/libs/zbxicmppingだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxicmppingだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxicmpping/Makefile.in zabbix-2.4.5/src/libs/zbxicmpping/Makefile.in
@@ -9744,8 +9686,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxicmpping/Makefile.in zabbix-2.4.5/src/lib
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxicmppingだけに発見: icmpping.o
-zabbix-2.4.5/src/libs/zbxicmppingだけに発見: libzbxicmpping.a
 zabbix-2.4.5/src/libs/zbxjsonだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxjsonだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxjson/Makefile.in zabbix-2.4.5/src/libs/zbxjson/Makefile.in
@@ -10055,9 +9995,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxjson/Makefile.in zabbix-2.4.5/src/libs/zb
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxjsonだけに発見: json.o
-zabbix-2.4.5/src/libs/zbxjsonだけに発見: json_parser.o
-zabbix-2.4.5/src/libs/zbxjsonだけに発見: libzbxjson.a
 zabbix-2.4.5/src/libs/zbxlogだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxlogだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxlog/Makefile.in zabbix-2.4.5/src/libs/zbxlog/Makefile.in
@@ -10367,8 +10304,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxlog/Makefile.in zabbix-2.4.5/src/libs/zbx
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxlogだけに発見: libzbxlog.a
-zabbix-2.4.5/src/libs/zbxlogだけに発見: log.o
 zabbix-2.4.5/src/libs/zbxmediaだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxmediaだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxmedia/Makefile.in zabbix-2.4.5/src/libs/zbxmedia/Makefile.in
@@ -10681,10 +10616,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxmedia/Makefile.in zabbix-2.4.5/src/libs/z
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxmediaだけに発見: email.o
-zabbix-2.4.5/src/libs/zbxmediaだけに発見: eztexting.o
-zabbix-2.4.5/src/libs/zbxmediaだけに発見: libzbxmedia.a
-zabbix-2.4.5/src/libs/zbxmediaだけに発見: sms.o
 zabbix-2.4.5/src/libs/zbxmemoryだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxmemoryだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxmemory/Makefile.in zabbix-2.4.5/src/libs/zbxmemory/Makefile.in
@@ -10994,9 +10925,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxmemory/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxmemoryだけに発見: libzbxmemory.a
-zabbix-2.4.5/src/libs/zbxmemoryだけに発見: memalloc.o
-zabbix-2.4.5/src/libs/zbxmemoryだけに発見: strpool.o
 zabbix-2.4.5/src/libs/zbxmodulesだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxmodulesだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxmodules/Makefile.in zabbix-2.4.5/src/libs/zbxmodules/Makefile.in
@@ -11306,8 +11234,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxmodules/Makefile.in zabbix-2.4.5/src/libs
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxmodulesだけに発見: libzbxmodules.a
-zabbix-2.4.5/src/libs/zbxmodulesだけに発見: modules.o
 zabbix-2.4.5/src/libs/zbxnixだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxnixだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxnix/Makefile.in zabbix-2.4.5/src/libs/zbxnix/Makefile.in
@@ -11618,13 +11544,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxnix/Makefile.in zabbix-2.4.5/src/libs/zbx
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxnixだけに発見: control.o
-zabbix-2.4.5/src/libs/zbxnixだけに発見: daemon.o
-zabbix-2.4.5/src/libs/zbxnixだけに発見: fatal.o
-zabbix-2.4.5/src/libs/zbxnixだけに発見: ipc.o
-zabbix-2.4.5/src/libs/zbxnixだけに発見: libzbxnix.a
-zabbix-2.4.5/src/libs/zbxnixだけに発見: pid.o
-zabbix-2.4.5/src/libs/zbxnixだけに発見: sighandler.o
 zabbix-2.4.5/src/libs/zbxregexpだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxregexpだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxregexp/Makefile.in zabbix-2.4.5/src/libs/zbxregexp/Makefile.in
@@ -11934,8 +11853,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxregexp/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxregexpだけに発見: libzbxregexp.a
-zabbix-2.4.5/src/libs/zbxregexpだけに発見: zbxregexp.o
 zabbix-2.4.5/src/libs/zbxselfだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxselfだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxself/Makefile.in zabbix-2.4.5/src/libs/zbxself/Makefile.in
@@ -12245,7 +12162,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxself/Makefile.in zabbix-2.4.5/src/libs/zb
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxselfだけに発見: libzbxself.a
 diff -ur zabbix-2.4.5.orig/src/libs/zbxself/selfmon.c zabbix-2.4.5/src/libs/zbxself/selfmon.c
 --- zabbix-2.4.5.orig/src/libs/zbxself/selfmon.c	2015-04-22 16:56:00.000000000 +0900
 +++ zabbix-2.4.5/src/libs/zbxself/selfmon.c	2015-06-07 16:54:19.801164013 +0900
@@ -12278,7 +12194,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxself/selfmon.c zabbix-2.4.5/src/libs/zbxs
  	}
  
  	THIS_SHOULD_NEVER_HAPPEN;
-zabbix-2.4.5/src/libs/zbxselfだけに発見: selfmon.o
 zabbix-2.4.5/src/libs/zbxserverだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxserverだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxserver/Makefile.in zabbix-2.4.5/src/libs/zbxserver/Makefile.in
@@ -12637,9 +12552,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxserver/Makefile.in zabbix-2.4.5/src/libs/
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxserverだけに発見: libzbxserver.a
-zabbix-2.4.5/src/libs/zbxserverだけに発見: libzbxserver_a-evalfunc.o
-zabbix-2.4.5/src/libs/zbxserverだけに発見: libzbxserver_a-expression.o
 zabbix-2.4.5/src/libs/zbxsysだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsys/Makefile.in zabbix-2.4.5/src/libs/zbxsys/Makefile.in
@@ -12949,9 +12861,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsys/Makefile.in zabbix-2.4.5/src/libs/zbx
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysだけに発見: libzbxsys.a
-zabbix-2.4.5/src/libs/zbxsysだけに発見: mutexs.o
-zabbix-2.4.5/src/libs/zbxsysだけに発見: threads.o
 zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/Makefile.in
@@ -13782,8 +13691,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/agent/Makefile.in zabbix-2.4.5/sr
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysinfo/agentだけに発見: agent.o
-zabbix-2.4.5/src/libs/zbxsysinfo/agentだけに発見: libagentsysinfo.a
 zabbix-2.4.5/src/libs/zbxsysinfo/aixだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfo/aixだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/aix/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/aix/Makefile.in
@@ -14706,12 +14613,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/common/Makefile.in zabbix-2.4.5/s
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: common.o
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: file.o
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: http.o
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: libcommonsysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: net.o
-zabbix-2.4.5/src/libs/zbxsysinfo/commonだけに発見: system.o
 zabbix-2.4.5/src/libs/zbxsysinfo/freebsdだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfo/freebsdだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/freebsd/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/freebsd/Makefile.in
@@ -15892,12 +15793,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/hpux/Makefile.in zabbix-2.4.5/src
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxagentsysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxagentsysinfo_a-sysinfo.o
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxproxysysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxproxysysinfo_a-sysinfo.o
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxserversysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfoだけに発見: libzbxserversysinfo_a-sysinfo.o
 zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/linux/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/linux/Makefile.in
@@ -16576,25 +16471,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/linux/Makefile.in zabbix-2.4.5/sr
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: hostname.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspechostnamesysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-boottime.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-cpu.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-diskio.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-diskspace.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-hardware.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-inodes.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-kernel.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-linux.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-memory.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-net.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-proc.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-sensors.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-software.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-swap.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-system.o
-zabbix-2.4.5/src/libs/zbxsysinfo/linuxだけに発見: libspecsysinfo_a-uptime.o
 zabbix-2.4.5/src/libs/zbxsysinfo/netbsdだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfo/netbsdだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/netbsd/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/netbsd/Makefile.in
@@ -19352,9 +19228,6 @@ diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/simple/Makefile.in zabbix-2.4.5/s
  	uninstall-am
  
  
-zabbix-2.4.5/src/libs/zbxsysinfo/simpleだけに発見: libsimplesysinfo.a
-zabbix-2.4.5/src/libs/zbxsysinfo/simpleだけに発見: ntp.o
-zabbix-2.4.5/src/libs/zbxsysinfo/simpleだけに発見: simple.o
 zabbix-2.4.5/src/libs/zbxsysinfo/solarisだけに発見: .deps
 zabbix-2.4.5/src/libs/zbxsysinfo/solarisだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/libs/zbxsysinfo/solaris/Makefile.in zabbix-2.4.5/src/libs/zbxsysinfo/solaris/Makefile.in
@@ -21024,22 +20897,17 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_agent/Makefile.in zabbix-2.4.5/src/zabbix_
  
  
  install-data-hook:
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-cpustat.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-diskdevices.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-stats.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-vmstats.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-zabbix_agent.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agent-zbxconf.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-active.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-cpustat.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-diskdevices.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-listener.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-logfiles.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-stats.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-vmstats.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-zabbix_agentd.o
-zabbix-2.4.5/src/zabbix_agentだけに発見: zabbix_agentd-zbxconf.o
+diff -ur zabbix-2.4.5.orig/src/zabbix_agent/zabbix_agentd.c zabbix-2.4.5/src/zabbix_agent/zabbix_agentd.c
+--- zabbix-2.4.5.orig/src/zabbix_agent/zabbix_agentd.c	2015-04-22 16:56:01.000000000 +0900
++++ zabbix-2.4.5/src/zabbix_agent/zabbix_agentd.c	2015-06-07 18:29:37.076618494 +0900
+@@ -192,6 +192,7 @@
+ int	CONFIG_COLLECTOR_FORKS		= 1;
+ int	CONFIG_PASSIVE_FORKS		= 3;	/* number of listeners for processing passive checks */
+ int	CONFIG_ACTIVE_FORKS		= 0;
++int	CONFIG_VERIFY_FORKS		= 0;
+ 
+ char	*opt = NULL;
+ 
 zabbix-2.4.5/src/zabbix_getだけに発見: .deps
 zabbix-2.4.5/src/zabbix_getだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_get/Makefile.in zabbix-2.4.5/src/zabbix_get/Makefile.in
@@ -22995,6 +22863,18 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_proxy/housekeeper/Makefile.in zabbix-2.4.5
  	uninstall-am
  
  
+diff -ur zabbix-2.4.5.orig/src/zabbix_proxy/proxy.c zabbix-2.4.5/src/zabbix_proxy/proxy.c
+--- zabbix-2.4.5.orig/src/zabbix_proxy/proxy.c	2015-04-22 16:56:00.000000000 +0900
++++ zabbix-2.4.5/src/zabbix_proxy/proxy.c	2015-06-07 18:34:23.448853319 +0900
+@@ -152,6 +152,8 @@
+ int	CONFIG_VMWARE_PERF_FREQUENCY	= 60;
+ int	CONFIG_VMWARE_TIMEOUT		= 10;
+ 
++int	CONFIG_VERIFY_FORKS		= 0;
++
+ zbx_uint64_t	CONFIG_CONF_CACHE_SIZE		= 8 * ZBX_MEBIBYTE;
+ zbx_uint64_t	CONFIG_HISTORY_CACHE_SIZE	= 8 * ZBX_MEBIBYTE;
+ zbx_uint64_t	CONFIG_TRENDS_CACHE_SIZE	= 0;
 zabbix-2.4.5/src/zabbix_proxy/proxyconfigだけに発見: .deps
 zabbix-2.4.5/src/zabbix_proxy/proxyconfigだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_proxy/proxyconfig/Makefile.in zabbix-2.4.5/src/zabbix_proxy/proxyconfig/Makefile.in
@@ -24545,8 +24425,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/alerter/Makefile.in zabbix-2.4.5/sr
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/alerterだけに発見: alerter.o
-zabbix-2.4.5/src/zabbix_server/alerterだけに発見: libzbxalerter.a
 zabbix-2.4.5/src/zabbix_server/dbconfigだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/dbconfigだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/dbconfig/Makefile.in zabbix-2.4.5/src/zabbix_server/dbconfig/Makefile.in
@@ -24856,8 +24734,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/dbconfig/Makefile.in zabbix-2.4.5/s
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/dbconfigだけに発見: dbconfig.o
-zabbix-2.4.5/src/zabbix_server/dbconfigだけに発見: libzbxdbconfig.a
 zabbix-2.4.5/src/zabbix_server/dbsyncerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/dbsyncerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/dbsyncer/Makefile.in zabbix-2.4.5/src/zabbix_server/dbsyncer/Makefile.in
@@ -25167,8 +25043,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/dbsyncer/Makefile.in zabbix-2.4.5/s
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/dbsyncerだけに発見: dbsyncer.o
-zabbix-2.4.5/src/zabbix_server/dbsyncerだけに発見: libzbxdbsyncer.a
 zabbix-2.4.5/src/zabbix_server/discovererだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/discovererだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/discoverer/Makefile.in zabbix-2.4.5/src/zabbix_server/discoverer/Makefile.in
@@ -25478,8 +25352,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/discoverer/Makefile.in zabbix-2.4.5
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/discovererだけに発見: discoverer.o
-zabbix-2.4.5/src/zabbix_server/discovererだけに発見: libzbxdiscoverer.a
 zabbix-2.4.5/src/zabbix_server/escalatorだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/escalatorだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/escalator/Makefile.in zabbix-2.4.5/src/zabbix_server/escalator/Makefile.in
@@ -25789,8 +25661,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/escalator/Makefile.in zabbix-2.4.5/
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/escalatorだけに発見: escalator.o
-zabbix-2.4.5/src/zabbix_server/escalatorだけに発見: libzbxescalator.a
 zabbix-2.4.5/src/zabbix_server/housekeeperだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/housekeeperだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/housekeeper/Makefile.in zabbix-2.4.5/src/zabbix_server/housekeeper/Makefile.in
@@ -26100,8 +25970,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/housekeeper/Makefile.in zabbix-2.4.
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/housekeeperだけに発見: housekeeper.o
-zabbix-2.4.5/src/zabbix_server/housekeeperだけに発見: libzbxhousekeeper.a
 zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/httppoller/Makefile.in zabbix-2.4.5/src/zabbix_server/httppoller/Makefile.in
@@ -26412,10 +26280,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/httppoller/Makefile.in zabbix-2.4.5
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: httpmacro.o
-zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: httppoller.o
-zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: httptest.o
-zabbix-2.4.5/src/zabbix_server/httppollerだけに発見: libzbxhttppoller.a
 zabbix-2.4.5/src/zabbix_server/pingerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/pingerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/pinger/Makefile.in zabbix-2.4.5/src/zabbix_server/pinger/Makefile.in
@@ -26725,8 +26589,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/pinger/Makefile.in zabbix-2.4.5/src
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/pingerだけに発見: libzbxpinger.a
-zabbix-2.4.5/src/zabbix_server/pingerだけに発見: pinger.o
 zabbix-2.4.5/src/zabbix_server/pollerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/pollerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/poller/Makefile.in zabbix-2.4.5/src/zabbix_server/poller/Makefile.in
@@ -27353,20 +27215,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/poller/Makefile.in zabbix-2.4.5/src
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller.a
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_agent.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_aggregate.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_calculated.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_external.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_internal.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_ipmi.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_java.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_simple.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_simple_vmware.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_snmp.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_ssh.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-checks_telnet.o
-zabbix-2.4.5/src/zabbix_server/pollerだけに発見: libzbxpoller_a-poller.o
 zabbix-2.4.5/src/zabbix_server/proxypollerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/proxypollerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/proxypoller/Makefile.in zabbix-2.4.5/src/zabbix_server/proxypoller/Makefile.in
@@ -27676,8 +27524,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/proxypoller/Makefile.in zabbix-2.4.
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/proxypollerだけに発見: libzbxproxypoller.a
-zabbix-2.4.5/src/zabbix_server/proxypollerだけに発見: proxypoller.o
 zabbix-2.4.5/src/zabbix_server/selfmonだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/selfmonだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/selfmon/Makefile.in zabbix-2.4.5/src/zabbix_server/selfmon/Makefile.in
@@ -27987,11 +27833,9 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/selfmon/Makefile.in zabbix-2.4.5/sr
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/selfmonだけに発見: libzbxselfmon.a
-zabbix-2.4.5/src/zabbix_server/selfmonだけに発見: selfmon.o
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/server.c zabbix-2.4.5/src/zabbix_server/server.c
 --- zabbix-2.4.5.orig/src/zabbix_server/server.c	2015-04-22 16:56:00.000000000 +0900
-+++ zabbix-2.4.5/src/zabbix_server/server.c	2015-06-07 16:57:49.341159245 +0900
++++ zabbix-2.4.5/src/zabbix_server/server.c	2015-06-07 18:32:42.960771891 +0900
 @@ -53,6 +53,7 @@
  #include "proxypoller/proxypoller.h"
  #include "selfmon/selfmon.h"
@@ -28000,17 +27844,18 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/server.c zabbix-2.4.5/src/zabbix_se
  
  #include "valuecache.h"
  #include "setproctitle.h"
-@@ -147,6 +148,9 @@
+@@ -147,6 +148,10 @@
  int	CONFIG_VMWARE_PERF_FREQUENCY	= 60;
  int	CONFIG_VMWARE_TIMEOUT		= 10;
  
 +int	CONFIG_VERIFY_FORKS		= 1;
-+int	CONFIG_VERYFY_PORT		= 10061;
++char	*CONFIG_LISTEN_VERIFY_IP		= NULL;
++int	CONFIG_LISTEN_VERYFY_PORT		= 10061;
 +
  zbx_uint64_t	CONFIG_CONF_CACHE_SIZE		= 8 * ZBX_MEBIBYTE;
  zbx_uint64_t	CONFIG_HISTORY_CACHE_SIZE	= 8 * ZBX_MEBIBYTE;
  zbx_uint64_t	CONFIG_TRENDS_CACHE_SIZE	= 4 * ZBX_MEBIBYTE;
-@@ -309,6 +313,11 @@
+@@ -309,6 +314,11 @@
  		*process_type = ZBX_PROCESS_TYPE_VMWARE;
  		*process_num = server_num - server_count + CONFIG_VMWARE_FORKS;
  	}
@@ -28022,7 +27867,7 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/server.c zabbix-2.4.5/src/zabbix_se
  	else
  		return FAIL;
  
-@@ -797,7 +806,7 @@
+@@ -797,7 +807,7 @@
  			+ CONFIG_HTTPPOLLER_FORKS + CONFIG_DISCOVERER_FORKS + CONFIG_HISTSYNCER_FORKS
  			+ CONFIG_ESCALATOR_FORKS + CONFIG_IPMIPOLLER_FORKS + CONFIG_JAVAPOLLER_FORKS
  			+ CONFIG_SNMPTRAPPER_FORKS + CONFIG_PROXYPOLLER_FORKS + CONFIG_SELFMON_FORKS
@@ -28031,7 +27876,7 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/server.c zabbix-2.4.5/src/zabbix_se
  	threads = zbx_calloc(threads, threads_num, sizeof(pid_t));
  
  	if (0 != CONFIG_TRAPPER_FORKS)
-@@ -816,8 +825,11 @@
+@@ -816,8 +826,11 @@
  		zbx_thread_args_t	thread_args;
  		unsigned char		poller_type;
  
@@ -28043,7 +27888,7 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/server.c zabbix-2.4.5/src/zabbix_se
  			THIS_SHOULD_NEVER_HAPPEN;
  			exit(EXIT_FAILURE);
  		}
-@@ -893,6 +905,9 @@
+@@ -893,6 +906,9 @@
  			case ZBX_PROCESS_TYPE_VMWARE:
  				threads[i] = zbx_thread_start(vmware_thread, &thread_args);
  				break;
@@ -28362,8 +28207,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/snmptrapper/Makefile.in zabbix-2.4.
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/snmptrapperだけに発見: libzbxsnmptrapper.a
-zabbix-2.4.5/src/zabbix_server/snmptrapperだけに発見: snmptrapper.o
 zabbix-2.4.5/src/zabbix_server/timerだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/timerだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/timer/Makefile.in zabbix-2.4.5/src/zabbix_server/timer/Makefile.in
@@ -28673,8 +28516,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/timer/Makefile.in zabbix-2.4.5/src/
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/timerだけに発見: libzbxtimer.a
-zabbix-2.4.5/src/zabbix_server/timerだけに発見: timer.o
 zabbix-2.4.5/src/zabbix_server/trapperだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/trapperだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/trapper/Makefile.in zabbix-2.4.5/src/zabbix_server/trapper/Makefile.in
@@ -28987,14 +28828,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/trapper/Makefile.in zabbix-2.4.5/sr
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: active.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: libzbxtrapper.a
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: nodecommand.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: proxyautoreg.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: proxyconfig.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: proxydiscovery.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: proxyhosts.o
-zabbix-2.4.5/src/zabbix_server/trapperだけに発見: trapper.o
 zabbix-2.4.5/src/zabbix_serverだけに発見: verify
 zabbix-2.4.5/src/zabbix_server/vmwareだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/vmwareだけに発見: Makefile
@@ -29305,8 +29138,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/vmware/Makefile.in zabbix-2.4.5/src
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/vmwareだけに発見: libzbxvmware.a
-zabbix-2.4.5/src/zabbix_server/vmwareだけに発見: vmware.o
 zabbix-2.4.5/src/zabbix_server/watchdogだけに発見: .deps
 zabbix-2.4.5/src/zabbix_server/watchdogだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/src/zabbix_server/watchdog/Makefile.in zabbix-2.4.5/src/zabbix_server/watchdog/Makefile.in
@@ -29616,14 +29447,6 @@ diff -ur zabbix-2.4.5.orig/src/zabbix_server/watchdog/Makefile.in zabbix-2.4.5/s
  	uninstall-am
  
  
-zabbix-2.4.5/src/zabbix_server/watchdogだけに発見: libzbxwatchdog.a
-zabbix-2.4.5/src/zabbix_server/watchdogだけに発見: watchdog.o
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server-actions.o
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server-events.o
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server-operations.o
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server-scripts.o
-zabbix-2.4.5/src/zabbix_serverだけに発見: zabbix_server-server.o
 zabbix-2.4.5/upgradesだけに発見: Makefile
 diff -ur zabbix-2.4.5.orig/upgrades/Makefile.in zabbix-2.4.5/upgrades/Makefile.in
 --- zabbix-2.4.5.orig/upgrades/Makefile.in	2015-04-22 16:56:48.000000000 +0900
