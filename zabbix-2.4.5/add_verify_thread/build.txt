@@ -1,0 +1,24 @@
+---------------
+How to build
+---------------
+= Build System with Debian 7
+- install depend package
+
+  # apt-get install libmysqld-dev libxml2-dev libsnmp-dev libssh2-1-dev libopenipmi-dev libcurl4-openssl-dev
+
+- run autoreconf
+
+  $ autoreconf -fvi
+
+- run configure
+
+  $ ./configure --prefix=/usr/local --enable-server --enable-proxy --enable-agent --enable-ipv6 --with-mysql --with-libxml2 --with-net-snmp --with-ssh2 --with-openipmi --with-libcurl 
+
+- run make & make install
+
+  $ make -j 4
+  # make install
+
+
+= Build system with CentOS 7
+- 
