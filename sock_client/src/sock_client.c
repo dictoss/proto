@@ -27,6 +27,11 @@ struct mysockdata {
 	struct sockaddr_storage sockaddr;
 };
 
+/*
+  prototype
+ */
+void print_hexdump(const char *s, size_t size);
+
 
 /*
  global var
@@ -122,6 +127,8 @@ int main(int argc, char *argv[])
         fprintf(stderr, "----\n");
         fprintf(stdout, recvbuf);
         fprintf(stderr, "----\n");
+        print_hexdump(recvbuf, ret);
+        fprintf(stderr, "\n----\n");  
     }
     
     /* close */
@@ -131,4 +138,21 @@ int main(int argc, char *argv[])
 	fprintf(stderr, "finish.\n");
 	
 	return 0;
+}
+
+/*
+ hex dump tool.
+ */
+void print_hexdump(const char *s, size_t size)
+{
+    const char *p = NULL;
+    int i = 0;
+
+    for(p = s, i = 0; p < s + size; p ++, i++){
+        if(i % 8 == 0){
+            fprintf(stderr, "\n");
+        }
+
+        fprintf(stderr, "%02X ", *p);
+    }
 }
