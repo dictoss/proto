@@ -17,7 +17,7 @@ LIBS=
 
 # link option
 CFLAGS=
-LDFLAGS=-ljansson
+LDFLAGS=-ljansson -lcurl
 
 #################################################
 #
