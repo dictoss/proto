@@ -1,0 +1,11 @@
+# schema
+create table t_test1 (
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  create_date TEXT,
+  update_date TEXT,
+  name TEXT
+);
+CREATE INDEX idx_name on t_test1(name);
+
+INSERT INTO t_test1 VALUES (NULL, '2016-02-08 15:55:01', '2016-02-08 15:55:01', 'name1');
+INSERT INTO t_test1 VALUES (NULL, '2016-02-08 15:55:02', '2016-02-08 15:55:02', 'name2');
