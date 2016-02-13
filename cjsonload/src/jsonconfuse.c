@@ -26,12 +26,12 @@ struct mycurlbuffer
 };
 
 int test_curl_call(const char*);
-int get_http_file(const char *, struct mycurlbuffer*);
+int get_http_mem(const char *, struct mycurlbuffer*);
 int get_http_json(const char *url, json_t **);
 int post_http_json(const char *url, json_t *req);
 int loadfile_json(const char *json_file, char **buf);
 
-size_t curl_recv_cb(char *ptr, size_t size, size_t nmemb, void *userdata);
+size_t curl_recv_mem_cb(char *ptr, size_t size, size_t nmemb, void *userdata);
 
 /*
  main
@@ -80,7 +80,7 @@ int test_curl_call(const char *url)
         struct mycurlbuffer d = {0};
         size_t i = 0;
 
-        ret = get_http_file(target_url, &d);
+        ret = get_http_mem(target_url, &d);
         if(ret < 0){
             /* fail */
             exitcode = 1;
@@ -145,7 +145,7 @@ int test_curl_call(const char *url)
 }
 
 
-size_t curl_recv_cb(char *ptr, size_t size, size_t nmemb, void *userdata)
+size_t curl_recv_mem_cb(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
     CURLcode cres;
     double content_length = 0.0;
@@ -201,7 +201,7 @@ size_t curl_recv_cb(char *ptr, size_t size, size_t nmemb, void *userdata)
 /*
  * get file from http.
  */
-int get_http_file(const char *url, struct mycurlbuffer *pdata)
+int get_http_mem(const char *url, struct mycurlbuffer *pdata)
 {
     CURLcode cres;
     CURL *curl = NULL;
@@ -220,7 +220,7 @@ int get_http_file(const char *url, struct mycurlbuffer *pdata)
 
     pdata->pc = curl;
     cres = curl_easy_setopt(curl, CURLOPT_WRITEDATA, pdata);
-    cres = curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_recv_cb);
+    cres = curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_recv_mem_cb);
 
     /* request and response */
     fprintf(stderr, "start request\n");
@@ -262,7 +262,7 @@ int get_http_json(const char *url, json_t **res)
     json_error_t error;
     struct mycurlbuffer d = {0};
     
-    ret = get_http_file(url, &d);
+    ret = get_http_mem(url, &d);
     if(0 < ret){
         return -1;
     }
