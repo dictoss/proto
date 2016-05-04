@@ -1,0 +1,2 @@
+# Accept offset parameter for API calls
+  - https://support.zabbix.com/browse/ZBXNEXT-2132
