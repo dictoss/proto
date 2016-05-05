@@ -1,0 +1,30 @@
+--- include/classes/api/services/CHistory.php.orig	2016-04-20 18:51:23.000000000 +0900
++++ include/classes/api/services/CHistory.php	2016-05-05 11:32:17.312000000 +0900
+@@ -81,7 +81,8 @@
+ 			'preservekeys'				=> null,
+ 			'sortfield'					=> '',
+ 			'sortorder'					=> '',
+-			'limit'						=> null
++			'limit'						=> null,
++			'offset'					=> 0
+ 		];
+ 		$options = zbx_array_merge($defOptions, $options);
+ 
+@@ -158,6 +159,8 @@
+ 			}
+ 		}
+ 
++		$offset = $options['offset'];
++
+ 		// sorting
+ 		$sqlParts = $this->applyQuerySortOptions($tableName, $this->tableAlias(), $options, $sqlParts);
+ 
+@@ -190,7 +193,7 @@
+ 				' FROM '.$sqlFrom.
+ 				$sqlWhere.
+ 				$sqlOrder;
+-		$dbRes = DBselect($sql, $sqlLimit);
++		$dbRes = DBselect($sql, $sqlLimit, $offset);
+ 		while ($data = DBfetch($dbRes)) {
+ 			if ($options['countOutput']) {
+ 				$result = $data;
