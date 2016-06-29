@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>ajax test</title>
+  <!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script lang="javascript">
+g_customer_list = [{"c_id":1},{"c_id":3},{"c_id":2}];  
+g_customer_row_mapping = {1:0,3:1,2:2};
+
+g_reload_span_millsec = 5 * 1000;
+g_reload_timer = null;
+
+function ajax_load_datas(){
+  var target_url = "";
+  customer_id = 0;
+  var i;
+
+  clearInterval(g_reload_timer);
+                     
+  for(i = 0; i < g_customer_list.length; i++){
+    target_url = "/proto/ajaxtest_" + g_customer_list[i]["c_id"] + ".json";
+                 
+    $.ajax({
+      type: "GET",
+      async: true,
+      cache : false,
+      url: target_url
+    })
+    .done(function(data) {
+      console.log("done." + data);
+ 
+      row_id = g_customer_row_mapping[data["c_id"]];
+      console.log("row_id = " + row_id);
+                 
+      var row = $('table#target_table1 tbody tr:eq(' + row_id + ')');
+      console.log(row);
+
+      $('table#target_table1 tbody tr:eq(' + row_id + ') td:eq(0)').text(new Date());
+      $('table#target_table1 tbody tr:eq(' + row_id + ') td:eq(1)').text(data["c_id"]);
+      $('table#target_table1 tbody tr:eq(' + row_id + ') td:eq(2)').text(data["title"]);
+      $('table#target_table1 tbody tr:eq(' + row_id + ') td:eq(3)').text(data["content"]);
+    })
+    .fail(function() {
+      console.log("Error!!");
+    })
+    .always(function(data) {
+      console.log("always!!");
+    });
+  }
+
+  g_reload_timer = setInterval(ajax_load_datas, g_reload_span_millsec);
+}
+</script>
+<body onLoad="ajax_load_datas()">
+  <h1>test ajax</h1>
+  <table id="target_table1" border="1">
+    <caption>test content</caption>
+    <thead>
+      <tr>
+        <th>epoch</th>
+        <th>no</th>
+        <th>title</th>
+        <th>content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>1</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>3</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
