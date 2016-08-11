@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     udev_lookup_device("video4linux");
     udev_lookup_device("drm");
     udev_lookup_device("acpi");
+    udev_lookup_device("tty");
 
     udev_lookup_device("usb");
     
