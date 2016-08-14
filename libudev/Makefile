@@ -17,7 +17,7 @@ LIBS=
 
 # link option
 CFLAGS=
-LDFLAGS=-ludev -levdev
+LDFLAGS=-ludev
 
 #################################################
 #
