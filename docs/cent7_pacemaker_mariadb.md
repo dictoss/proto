@@ -76,11 +76,72 @@
 
 - リソースの削除
   - # pcs resource delete {resource_id}
-                
+
+- ocfのmysqlの中身を見てみる
+  - mysqlの"SHOW SLAVE STATUS"などをみて、slaveなのかmasterなのかのれプリケーション状態を確認する処理がある
+  - slaveサーバへpacemakerが起動時に"CHANGE MASTER TO"する仕様の模様
+    - レプリケーションはHAクラスタの制御下には入れたくない人もいると思う
+    - 余計なことをしてくれる、と思わないでもない
+  - "RESET SLAVE;"になっており、"RESET SLAVE ALL;"と実行していない
+    - mysql-5.5以降で変わったような気がするので、mysql community editionだとうまく動かないかも。
 
 ---
 
 ## HAクラスタの構築手順
+
+### 2台のマシンでそれぞれ作業を進めます
+
+- 2台のマシンへCentOS-7をインストールします
+
+- SELinuxを無効にしておきます。（ごめんなさい）
+
+<pre>
+
+# vi /etc/selinux/config
+SELINUX=disabled
+
+</pre>
+
+- firewalldを無効化
+
+<pre>
+
+# systemctl disable firewalld
+# systemctl stop firewalld
+
+</pre>
+
+- mariadbとpacemakerをインストール
+
+<pre>
+
+# yum install mariadb-server
+# yum install pcs corosync pacemaker resource-agents
+→なぜかperl、ruby、nanoも入る。
+
+</pre>
+
+- haクラスタのユーザを作成
+
+<pre>
+# adduser hacluster
+# passwd hacluster
+Password: hapass
+
+</pre>
+
+- pacemakerデーモンを起動します
+
+<pre>
+
+# systemctl enable pcsd
+# systemctl start pcsd
+
+</pre>
+
+
+### 2台で協調しながら進めます
+
 
 
 ---
