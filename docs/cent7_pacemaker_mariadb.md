@@ -197,7 +197,7 @@ Enter password:
 MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.%' IDENTIFIED BY 'replpass';
 Query OK, 0 rows affected (0.00 sec)
 
-MariaDB [(none)]> GRANT SUPER,REPLICATION SLAVE,REPLICATION CLIENT,PROCESS ON *.* TO 'repl'@'localhost' IDENTIFIED BY 'replpass';
+MariaDB [(none)]> GRANT SUPER,REPLICATION SLAVE,REPLICATION CLIENT,PROCESS,RELOAD ON *.* TO 'repl'@'localhost' IDENTIFIED BY 'replpass';
 Query OK, 0 rows affected (0.00 sec)
 
 MariaDB [(none)]> FLUSH PRIVILEGES;
@@ -214,6 +214,14 @@ MariaDB [(none)]> SELECT host, user FROM mysql.user;
 | localhost | root |
 +-----------+------+
 5 rows in set (0.00 sec)
+
+MariaDB [(none)]> SHOW GRANTS for repl@localhost;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Grants for repl@localhost                                                                                                                                           |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GRANT RELOAD, PROCESS, SUPER, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'repl'@'localhost' IDENTIFIED BY PASSWORD '*D98280F03D0F78162EBDBB9C883FC01395DEA2BF' |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 
 MariaDB [(none)]> exit;
 
@@ -623,6 +631,8 @@ ERROR 1227 (42000) at line 1: Access denied; you need (at least one of) the RELO
  resource_dbms_mariadb_REPL_INFO: kvm-c7-db2|aria_log.000039|245
 
 # pcs resource cleanup resource_dbms_mariadb
+# pcs status
+
 # pcs cluster unstandby kvm-c7-db1
 
 
