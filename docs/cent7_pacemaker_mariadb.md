@@ -229,8 +229,9 @@ MariaDB [(none)]> exit;
 
 # vi /etc/hosts
 
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 kvm-c7-db1
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.22.115 kvm-c7-db1
 192.168.22.116 kvm-c7-db2
 
 </pre>
@@ -243,6 +244,7 @@ MariaDB [(none)]> exit;
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 kvm-c7-db2
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.22.115 kvm-c7-db1
+192.168.22.116 kvm-c7-db2
 
 </pre>
 
@@ -252,7 +254,7 @@ MariaDB [(none)]> exit;
 
 <pre>
 
-#  pcs cluster auth "kvm-c7-db1" "kvm-c7-db2" -u hacluster -p hapass
+# pcs cluster auth "kvm-c7-db1" "kvm-c7-db2" -u hacluster -p hapass
 kvm-c7-db1: Authorized
 kvm-c7-db2: Authorized
 
@@ -367,9 +369,10 @@ Daemon Status:
 <pre>
 
 # pcs -f dbms_mariadb_cluster.xml resource create resource_dbms_mariadb ocf:heartbeat:mysql
-# pcs -f dbms_mariadb_cluster.xml resource update resource_dbms_mariadb binary=/usr/bin/mysqld_safe datadir=/var/lib/mysql log=/var/log/mariadb/mariadb.log pid=/run/mariadb/mariadb.pid
-# pcs -f dbms_mariadb_cluster.xml resource update resource_dbms_mariadb replication_user=repl replication_passwd=replepass
+# pcs -f dbms_mariadb_cluster.xml resource update resource_dbms_mariadb binary=/usr/bin/mysqld_safe datadir=/var/lib/mysql log=/var/log/mariadb/mariadb.log pid=/run/mariadb/mariadb.pid socket=/var/lib/mysql/mysql.sock
+# pcs -f dbms_mariadb_cluster.xml resource update resource_dbms_mariadb replication_user=repl replication_passwd=replpass
 # pcs -f dbms_mariadb_cluster.xml resource op add resource_dbms_mariadb notify interval=0 timeout=90s
+# pcs -f dbms_mariadb_cluster.xml resource meta resource_dbms_mariadb meta migration-threshold=1
 
 </pre>
 
@@ -517,6 +520,78 @@ MariaDB [(none)]> exit
 
 <pre>
 
+# pcs resource cleanup resource_dbms_mariadb
+# pcs cluster start --all
+kvm-c7-db1: Starting Cluster...
+kvm-c7-db2: Starting Cluster...
+
+# pcs status
+Cluster name: cluster_mariadb
+Last updated: Mon Dec  5 22:08:18 2016          Last change: Sun Nov 27 23:56:39 2016 by root via crm_resource on kvm-c7-db1
+Stack: corosync
+Current DC: kvm-c7-db1 (version 1.1.13-10.el7_2.4-44eb2dd) - partition WITHOUT quorum
+2 nodes and 3 resources configured
+
+Online: [ kvm-c7-db1 ]
+OFFLINE: [ kvm-c7-db2 ]
+
+Full list of resources:
+
+ Resource Group: clustergroup_dbms_mariadb
+     resource_dbms_vip  (ocf::heartbeat:IPaddr2):       Stopped
+ Master/Slave Set: mariadb_replica [resource_dbms_mariadb]
+     Stopped: [ kvm-c7-db1 kvm-c7-db2 ]
+
+PCSD Status:
+  kvm-c7-db1: Online
+  kvm-c7-db2: Online
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/disabled
+  pcsd: active/enabled      
+
+</pre>
+
+- 2号機の状態を確認します。
+  - netstatを確認してみると、まだレプリケーションは開始していません。
+
+<pre>
+
+# pcs status
+Cluster name: cluster_mariadb
+WARNING: no stonith devices and stonith-enabled is not false
+Last updated: Mon Dec  5 22:07:11 2016          Last change: Sun Nov 27 21:38:27 2016 by hacluster via crmd on kvm-c7-db2
+Stack: corosync
+Current DC: kvm-c7-db2 (version 1.1.13-10.el7_2.4-44eb2dd) - partition WITHOUT quorum
+2 nodes and 0 resources configured
+
+Node kvm-c7-db1: UNCLEAN (offline)
+Online: [ kvm-c7-db2 ]
+
+Full list of resources:
+
+
+PCSD Status:
+  kvm-c7-db1: Online
+  kvm-c7-db2: Online
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/disabled
+  pcsd: active/enabled
+
+# netstat -an | grep 3306
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN
+
+</pre>
+
+- 2号機をunstandbyからstandbyに変更します。これによりHAクラスタへ組み込まれ、動作を開始します。
+
+<pre>
+
+# pcs resource cleanup resource_dbms_mariadb
+# pcs cluster unstandby kvm-c7-db2
 
 </pre>
 
@@ -524,17 +599,32 @@ MariaDB [(none)]> exit
 
 ## クラスタ構成を開始します
 
+# pcs resource cleanup resource_dbms_mariadb
 
 ## フェールオーバーしてみます
 
+# pcs cluster standby kvm-c7-db1
 
-## レプリケーションを再構成します
+- 2号機のmaster.infoは消えない仕様のようです。（クエリログではSTOP SLAVE; RESET SLAVE;しているのになぜか？）
+  - RELOAD権限がない。
+ERROR 1227 (42000) at line 1: Access denied; you need (at least one of) the RELOAD privilege(s) for this operation
+
+
+## レプリケーションを再構成しして、再度組み入れます。
+
+# pcs cluster standby kvm-c7-db1
+
+# mysqldumpする
+
+# dump | mysql で取り込む
+
+# pcs cluster edit
+# pcs config | grep REPL
+ resource_dbms_mariadb_REPL_INFO: kvm-c7-db2|aria_log.000039|245
+
+# pcs resource cleanup resource_dbms_mariadb
+# pcs cluster unstandby kvm-c7-db1
 
 
 ## 切り戻してみます
-
-
-
-
-
 
