@@ -10,3 +10,8 @@
   - virtualenvで環境を用意する
 - tox.ini 設定ファイルにバージョンを定義する
   - tox -e py36  など
+
+# stdeb
+
+- pythonパッケージをdebパッケージに変換する
+- py2dsc-deb
