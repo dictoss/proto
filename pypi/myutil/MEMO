@@ -1,0 +1,12 @@
+
+# general
+
+- http://diveintopython3-ja.rdy.jp/packaging.html
+- https://pypi.python.org/pypi?:action=list_classifiers
+
+# tox
+
+- 複数のpythonバージョンでテストするアプリ
+  - virtualenvで環境を用意する
+- tox.ini 設定ファイルにバージョンを定義する
+  - tox -e py36  など
