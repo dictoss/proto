@@ -1,5 +1,5 @@
 
-# upgrade steretch from jessie
+# upgrade debian-9(stretch) from debian-8(jessie)
 
 ## openvpn
 
