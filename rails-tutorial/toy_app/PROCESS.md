@@ -34,7 +34,7 @@
 
 - `$ cd path/to/dir`
 
-- `$ rails _5.1.2_ new toy_app`
+- `$ rails _5.1.2_ new toy_app -d mysql`
 
   - many install gems.
 
@@ -78,7 +78,8 @@
 - `$ sudo mysql`
 
    - `MariaDB [(none)]> CREATE DATABASE toy_app DEFAULT CHARACTER SET utf8;`
-   - `MariaDB [(none)]> GRANT ALL ON toy_app.* TO 'webapp'@'localhost' IDENTIFIED BY 'password';`
+   - `MariaDB [(none)]> CREATE DATABASE toy_app_devel DEFAULT CHARACTER SET utf8;`
+   - `MariaDB [(none)]> GRANT ALL ON toy_app_devel.* TO 'webapp'@'localhost' IDENTIFIED BY 'password';`
    - `MariaDB [(none)]> FLUSH PRIVILEGES;`
    - `MariaDB [(none)]> exit`
 
@@ -92,3 +93,37 @@
 - `$ vi app/controllers/application_controller.rb`
 
 - `$ vi config/routes.rb`
+
+## generate model
+
+- `$ cd toy_app`
+
+- set config "User" schema.
+
+  - `$ rails generate scaffold User name:string email:string`
+  - auto generate id column.
+  - Q. set bingit type for id ?
+
+    - A. If rails-5.1.2, id type is bigint on mariadb-10.1 .
+
+- change database config.
+
+  - want to mariadb.
+  -`$ vi config/database.yml`
+
+- migrate database
+
+  - `$ rails db:migrate`
+
+- show user management page.
+
+  - exec `$ rails s -b 0.0.0.0`
+
+  - access webpage "http://yourhost:3000/users/"
+
+  - create user.
+
+    - username: testuser1
+    - Email: testuser1@example.com
+
+
