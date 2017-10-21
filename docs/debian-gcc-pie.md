@@ -14,6 +14,12 @@
 
 - Debian上でパッケージを作るときにどう影響してくるのかわからないため、調べてみよう
 
+## 参考情報
+
+- ASLRとKASLRの概要
+
+  - https://qiita.com/satoru_takeuchi/items/5c80c4e255e21c5b4b8a
+
 
 ## Debianにおけるgccの採用バージョン
 
