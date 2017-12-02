@@ -94,11 +94,19 @@
 
 ### Fedora
 
-  - https://fedoraproject.org/wiki/Changes/Harden_All_Packages
+- https://fedoraproject.org/wiki/Changes/Harden_All_Packages
+
+
+### OpenBSD
+
+- OpenBSD's Posion Independent Executable (PIE) Implementation
+
+  - http://www.openbsd.org/papers/nycbsdcon08-pie/index.html
+
 
 ### FreeBSD
 
-  - clangコマンドにも `-fPIE`、`-pie` オプションがある
+- clangコマンドにも `-fPIE`、`-pie` オプションがある
 
 
 ## 実行ファイルのELF形式
@@ -122,13 +130,13 @@
 
 - 共有ライブラリはPIC (Position Independent Code)としてコンパイルするが、PIEは実行ファイル版のようなもの
 
-- gcc-7のオプション
+- gccのコンパイルおよびリンクオプション
 
   - コンパイル時オプション `-fPIE`
   - リンク時オプション `-pie`、`-no-pie`
+  - gcc-3.4で上記オプションが実装された
+  - ただ、動作するにはldの対応も必要であり、binutils-2.15以降が必要
 
-
-- gcc
 
 ## 実際に試してみた
 
