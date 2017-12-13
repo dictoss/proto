@@ -51,6 +51,17 @@
 
   - http://www.openbsd.org/papers/nycbsdcon08-pie/
 
+- https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html
+
+- https://wiki.debian.org/Hardening
+
+- Porter roll call for Debian Stretch
+
+  - https://lists.debian.org/debian-devel/2016/08/msg00324.html
+
+- Position Independent Executables (PIE)
+
+  - https://access.redhat.com/blogs/766093/posts/1975793
 
 ## 各ディストリビューションにおけるgccの採用バージョン
 
