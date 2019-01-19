@@ -34,3 +34,21 @@
   - bugreportにテストしたことを書いた
 
     - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=903529#19 
+
+## python-cookies FTBFS with python 3.7 as supported version
+
+- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=912183
+
+- 調べたところ、python3.7から処理に使うRFCを変えたらしい
+
+  - https://docs.python.org/3.7/library/urllib.parse.html#urllib.parse.quote
+
+  - Changed in version 3.7: Moved from RFC 2396 to RFC 3986 for quoting URL strings. “~” is now included in the set of reserved characters.
+
+- テストのコードを書き換えると、とりあえずテストは通ることを確認した。
+
+  - bug報告してみた
+
+  - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=912183#10
+
+- debian/patchesの作成やupstreamへの報告はまだ。
