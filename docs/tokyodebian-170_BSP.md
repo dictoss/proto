@@ -11,9 +11,6 @@
     - ここで直せるものは直す必要がある
     - 現在は中断したプロジェクト扱い
 
-  - 最低限のパッチを出すか、websocket2に乗り換えるか
-    - websocketsは、python3.4 or higherでのみ動作する
-
 - 今回の作業
 
   - transition freezeが始まったので、ws4pyのバージョンを上げるのも無理そう。
