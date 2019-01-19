@@ -30,7 +30,7 @@
 
   - できたdebパッケージをインストール。python3-ws4py_0.4.2+dfsg1-2.1_all.deb
 
-  - nodejs-10.15.0のwebsocketサーバにconnectできて、messageのsend、recvができた。
+  - nodejsのwebsocketサーバにconnectできて、messageのsend、recvができた。
   - bugreportにテストしたことを書いた
 
     - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=903529#19 
