@@ -21,3 +21,24 @@
   - [Debian Installer unstable版](https://d-i.debian.org/daily-images/arm64/daily/u-boot/pine64_plus.img.gz)
   - Installするためのドキュメント
     - [InstallingDebianOnPINE64PINEA64](https://wiki.debian.org/InstallingDebianOn/PINE64/PINEA64)
+
+## PINアサイン
+
+### PINアサインのドキュメント
+
+- http://files.pine64.org/doc/Pine%20A64%20Schematic/Pine%20A64%20Pin%20Assignment%20160119.pdf
+  - PIN群は3つある
+    - Pi-2 Connector （USBとHDMI端子の間にある40pin）
+    - Exp Connector （microsdカードスロットにすぐ横にある10pin）
+    - Euler "e" Connector （Expの隣にある 40pin）
+
+### USBでシリアルコンソールをとる方法
+
+- Exp Connector (10pinのところ)からシリアルコンソールを取れる
+  - 7 (TXD), 8 (RXD), 9 (GND)につなぐ
+    - [このUSBシリアル変換ケーブル](https://www.switch-science.com/catalog/1196/)の場合、7 (白)、8 (緑)、9 (黒)でつなげばよい（赤は差さない）
+- Debian Installerでインストールした場合はOS側はすでに設定済
+  - `# cat /proc/cmdline`
+    - console=ttyS0,115200 quiet
+  - `# systemctl status serial-getty@ttyS0.service`
+    - 起動中
