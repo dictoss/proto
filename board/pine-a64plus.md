@@ -11,6 +11,9 @@
     - PINE A64が512MB版
     - PINE A64+が1GB版と2GB版
 
+- ボードの解説記事
+  - https://linux-sunxi.org/Pine64
+
 ## 特徴
 
 - arm64版debianが素で動く
