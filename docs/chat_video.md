@@ -2,6 +2,7 @@
 
 ## 調査の観点
 
+- 紹介URL
 - ビデオチャットサービスのライセンス
   - プロプロエタリなサービス（有償or無償）
   - OSSを用いて構築したサービス
@@ -13,8 +14,11 @@
 
 ## skype
 
+- 紹介URL
+    - https://www.skype.com/en/
+
 - ビデオチャットサービスのライセンス
-    - Microsoftによる商用サービス https://www.skype.com/en/
+    - Microsoftによる商用サービス
     - 制限付きで無償利用可能
 
 - 配信の中継拠点の構築難度
@@ -31,5 +35,50 @@
 
 ## hangouts
 
+- 紹介URL
+    - https://hangouts.google.com/
+
 
 ## zoom
+
+- 紹介URL
+    - https://zoom.us/
+
+## icecast
+
+- 紹介URL
+    - http://icecast.org/
+
+## Nextcloud Talk
+
+- 紹介URL
+    - https://nextcloud.com/talk/
+
+
+## ffmpeg + ストリーミング配信ソフトを組み合わせる
+
+- 紹介URL
+
+
+## jitsi
+
+- 紹介URL
+    - https://jitsi.org/
+
+
+## OpenVidu
+
+- 紹介URL
+    - https://openvidu.io/
+
+
+## Janus WebRTC Server
+
+- 紹介URL
+    - https://janus.conf.meetecho.com/
+
+
+## licode
+
+- 紹介URL
+    - https://lynckia.com/licode/
