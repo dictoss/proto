@@ -39,11 +39,9 @@ typedef struct my_config {
 /* proto type */ 
 void log_callback(int, const char *, ...);
 void signal_handler(int);
-int callback_chat(struct libwebsocket_context *,
-                  struct libwebsocket *,
-                  enum libwebsocket_callback_reasons reason,
+int callback_chat(struct lws *wsi,
+                  enum lws_callback_reasons reason,
                   void *user, void *in, size_t len);
-
 
 /* global variables */
 volatile sig_atomic_t g_sigint = 0;
@@ -51,8 +49,7 @@ int deny_deflate = 0;
 int deny_mux = 0;
 struct my_config g_config = {"192.168.22.102", 0, 8888, "12345678"};
 
-
-struct libwebsocket_protocols g_wsproto[] = {
+struct lws_protocols g_wsproto[] = {
     {
         "chat",
         callback_chat,
@@ -60,7 +57,6 @@ struct libwebsocket_protocols g_wsproto[] = {
         RECV_BUF_SIZE,
         0,
         NULL,
-        0,
     },
     { /* end of list */
         NULL,
@@ -69,7 +65,6 @@ struct libwebsocket_protocols g_wsproto[] = {
         0,
         0,
         NULL,
-        0,
     }
 };
 
@@ -109,9 +104,8 @@ void signal_handler(int sig){
     }
 }
 
-int callback_chat(struct libwebsocket_context *this,
-                  struct libwebsocket *wsi,
-                  enum libwebsocket_callback_reasons reason,
+int callback_chat(struct lws *wsi,
+                  enum lws_callback_reasons reason,
                   void *user, void *in, size_t len)
 {
     int ret = 0;
@@ -137,10 +131,11 @@ int callback_chat(struct libwebsocket_context *this,
 
             fprintf(stderr, "send message:\n%s\n", &msgbuf[LWS_SEND_BUFFER_PRE_PADDING]);
         
-            ret = libwebsocket_write(wsi,
-                                     (unsigned char*)&msgbuf[LWS_SEND_BUFFER_PRE_PADDING],
-                                     jsonmsg_len,
-                                     LWS_WRITE_TEXT);
+            ret = lws_write(
+                wsi,
+                (unsigned char*)&msgbuf[LWS_SEND_BUFFER_PRE_PADDING],
+                jsonmsg_len,
+                LWS_WRITE_TEXT);
         }
 #else
         {
@@ -163,10 +158,11 @@ int callback_chat(struct libwebsocket_context *this,
 
                     fprintf(stderr, "send message:\n%s\n", jsonmsg);
 
-                    ret = libwebsocket_write(wsi,
-                                             (unsigned char*)&(sendmsg[LWS_SEND_BUFFER_PRE_PADDING]),
-                                             jsonmsg_len,
-                                             LWS_WRITE_TEXT);
+                    ret = lws_write(
+                        wsi,
+                        (unsigned char*)&(sendmsg[LWS_SEND_BUFFER_PRE_PADDING]),
+                        jsonmsg_len,
+                        LWS_WRITE_TEXT);
                 }
                 else{
                     fprintf(stderr, "fail malloc(). [sendmsg]\n");   
@@ -224,9 +220,10 @@ int callback_chat(struct libwebsocket_context *this,
 
 int main(int argc, char *argv[])
 {
-    struct libwebsocket_context *context = NULL;
+    struct lws_context *context = NULL;
     struct lws_context_creation_info wsinfo = {0};
-    struct libwebsocket *wsi_chat = NULL;
+    struct lws_client_connect_info conninfo = {0};
+    struct lws *wsi_chat = NULL;
     int ietf_version = -1;
     int ret = 0;
 
@@ -245,7 +242,7 @@ int main(int argc, char *argv[])
     wsinfo.iface = NULL;
     wsinfo.protocols = g_wsproto;
     /*wsinfo.protocols = NULL;*/
-    wsinfo.extensions = libwebsocket_get_internal_extensions();
+    wsinfo.extensions = NULL;
     wsinfo.token_limits = NULL;
     wsinfo.ssl_private_key_password = NULL;
     wsinfo.ssl_cert_filepath = NULL;
@@ -262,26 +259,27 @@ int main(int argc, char *argv[])
     wsinfo.ka_probes = 0;
     wsinfo.ka_interval = 0;
 
-    fprintf(stderr, "try libwebsocket_create_context.\n");
+    fprintf(stderr, "try lws_create_context.\n");
 
-    context = libwebsocket_create_context(&wsinfo);
+    context = lws_create_context(&wsinfo);
     if (context == NULL) {
         fprintf(stderr, "Creating libwebsocket context failed\n");
         return EXIT_FAILURE;
     }
 
-    fprintf(stderr, "try libwebsocket_client_connect.\n");
+    fprintf(stderr, "try lws_client_connect_via_info.\n");
 
-    wsi_chat = libwebsocket_client_connect(
-        context,
-        g_config.server_address,
-        g_config.server_port,
-        g_config.is_use_ssl,
-        "/",
-        "pcdennokan.dip.jp",
-        "http://pcdennokan.dip.jp",
-        g_wsproto[WSPROTO_CHAT].name,
-        ietf_version);
+    conninfo.context = context;
+    conninfo.address = g_config.server_address;
+    conninfo.port = g_config.server_port;
+    conninfo.ssl_connection = g_config.is_use_ssl;
+    conninfo.path = "/";
+    conninfo.host = "pcdennokan.dip.jp";
+    conninfo.origin = "http://pcdennokan.dip.jp";
+    conninfo.protocol = g_wsproto[WSPROTO_CHAT].name;
+    conninfo.ietf_version_or_minus_one = ietf_version;
+
+    wsi_chat = lws_client_connect_via_info(&conninfo);
     if (wsi_chat == NULL) {
         fprintf(stderr, "libwebsocket chat connect failed\n");
         return EXIT_FAILURE;
@@ -289,7 +287,7 @@ int main(int argc, char *argv[])
 
     /* loop */
     for(;;){
-        ret = libwebsocket_service(context, MSG_RECV_POLLING_SPAN);
+        ret = lws_service(context, MSG_RECV_POLLING_SPAN);
         fprintf(stderr, "service : %d\n", ret);
 
         if(0 < g_sigint){
@@ -300,7 +298,7 @@ int main(int argc, char *argv[])
 
     fprintf(stderr, "Exiting\n");
 
-    libwebsocket_context_destroy(context);
+    lws_context_destroy(context);
 
 	return EXIT_SUCCESS;
 }
