@@ -33,7 +33,8 @@ def main():
         print('success load json file. (%s)' % (JSON_FILE_IN_PATH))
         print('load data:')
         print('%s' % (_loaddata))
-    except:
+    except Exception as e:
+        print(e)
         print('EXCEPT load: %s (%s)' % (sys.exc_info()[0], sys.exc_info()[1]))
 
     # dump json
@@ -45,7 +46,8 @@ def main():
             f.write(_u_str)
 
         print('success dump. see %s.' % (JSON_FILE_OUT_PATH))
-    except:
+    except Exception as e:
+        print(e)
         print('EXCEPT dump: %s (%s)' % (sys.exc_info()[0], sys.exc_info()[1]))
 
 
